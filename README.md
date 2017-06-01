@@ -2,8 +2,9 @@
 
 ## Features
 
-Adds a \"create-react-component\" to context menue of folders
+Adds a "Add React Component" to context menue of folders
 
+![](./img/howto.gif)
 
 ## Contact
 
