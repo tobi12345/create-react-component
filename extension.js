@@ -14,21 +14,21 @@ function activate(context) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    var disposable = vscode.commands.registerCommand('extension.addComponent', function (context) {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-
+    var disposable = vscode.commands.registerCommand('extension.addComponentStateful', function (context) {
         vscode.window.showInputBox().then((name) => {
             if (typeof name === "undefined") {
                 return vscode.window.showErrorMessage("Create Component Failed");
             }
-            createComponent(name, context.fsPath);
+            createComponent(name, context.fsPath, true);
         });
-
-
-
-
-
+    });
+    var disposable = vscode.commands.registerCommand('extension.addComponentStateless', function (context) {
+        vscode.window.showInputBox().then((name) => {
+            if (typeof name === "undefined") {
+                return vscode.window.showErrorMessage("Create Component Failed");
+            }
+            createComponent(name, context.fsPath, false);
+        });
     });
 
     context.subscriptions.push(disposable);
@@ -89,11 +89,31 @@ export default ${name};`
 
 }
 
+function componnentString_Stateless(name) {
+    return `import React from 'react';
+
+import './${name}.css';
+
+const ${name} = () => {
+
+    render() {
+        return (
+            <div className='${name.toLowerCase()}_wrapper'>
+
+            </div>
+        );
+    }
+}
+
+export default ${name};`
+
+}
+
 function cssString(name) {
     return `.${name.toLowerCase()}_wrapper{\n\n}`
 }
 
-function createComponent(name, _path) {
+function createComponent(name, _path, isStateful) {
     const dir_path = _path;
     const component_name = name;
     const file_name_react = path.join(dir_path, component_name, component_name + ".react.js");
@@ -104,7 +124,7 @@ function createComponent(name, _path) {
 
     const file_Promise_Component = createFile(file_name_react);
     file_Promise_Component.then((file) => {
-        const write_Promise_Component = writeFile(file, componnentString(component_name));
+        const write_Promise_Component = writeFile(file, isStateful ? componnentString(component_name) : componnentString_Stateless(component_name));
 
         write_Promise_Component.then(() => {
             fs.close(file, function (err) {

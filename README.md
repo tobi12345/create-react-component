@@ -4,7 +4,7 @@
 
 Adds a "Add React Component" to context menue of folders
 
-![](./img/howto.gif)
+![Demo](./img/howto.gif)
 
 ## Contact
 

@@ -2,7 +2,7 @@
     "name": "create-react-component",
     "displayName": "create-react-component",
     "description": "Adds a \"create-react-component\" to context menue of folders",
-    "version": "0.5.0",
+    "version": "0.7.0",
     "publisher": "tobiKl",
     "engines": {
         "vscode": "^1.12.0"
@@ -11,22 +11,32 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.addComponent"
+        "onCommand:extension.addComponentStateless",
+        "onCommand:extension.addComponentStateful"
     ],
     "main": "./extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.addComponent",
-                "title": "Add React Component"
+                "command": "extension.addComponentStateful",
+                "title": "Add React Component (stateful)"
+            },
+            {
+                "command": "extension.addComponentStateless",
+                "title": "Add React Component (stateless)"
             }
         ],
         "menus": {
             "explorer/context": [
                 {
                     "when": "explorerResourceIsFolder",
-                    "command": "extension.addComponent",
-                    "group": "navigation"
+                    "command": "extension.addComponentStateful",
+                    "group": "c_React@1"
+                },
+                {
+                    "when": "explorerResourceIsFolder",
+                    "command": "extension.addComponentStateless",
+                    "group": "c_React@2"
                 }
             ]
         }
