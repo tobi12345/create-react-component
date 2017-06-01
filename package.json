@@ -2,7 +2,7 @@
     "name": "create-react-component",
     "displayName": "create-react-component",
     "description": "Adds a \"create-react-component\" to context menue of folders",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "publisher": "tobiKl",
     "engines": {
         "vscode": "^1.12.0"

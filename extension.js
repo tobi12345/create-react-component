@@ -96,13 +96,12 @@ import './${name}.css';
 
 const ${name} = () => {
 
-    render() {
-        return (
-            <div className='${name.toLowerCase()}_wrapper'>
+    return (
+        <div className='${name.toLowerCase()}_wrapper'>
 
-            </div>
-        );
-    }
+        </div>
+    );
+
 }
 
 export default ${name};`
