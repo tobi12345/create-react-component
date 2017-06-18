@@ -11,6 +11,7 @@
         "Other"
     ],
     "activationEvents": [
+        "onLanguage:javascript",
         "onCommand:extension.addComponentStateless",
         "onCommand:extension.addComponentStateful"
     ],
@@ -38,6 +39,14 @@
                     "command": "extension.addComponentStateless",
                     "group": "c_React@2"
                 }
+            ]
+        }
+    },
+    "capabilities": {
+        "completionProvider": {
+            "resolveProvider": "true",
+            "triggerCharacters": [
+                "import "
             ]
         }
     },
